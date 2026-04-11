@@ -4,6 +4,7 @@ pipeline{
         stage('Clone code') {
             steps {
                 git 'https://github.com/jay-devops-work/my-first-project.git'
+                git branch: 'main', url: 'https://github.com/jay-devops-work/my-first-project.git'
             }
         }
         stage('Build Docker Image') {

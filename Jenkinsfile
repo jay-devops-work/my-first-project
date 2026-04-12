@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t jaydevopswork/my-nginx-app:v1 .'
+                bat 'docker build -t jaydevopswork/my-nginx-app:v2 .'
             }
         }
 
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker push jaydevopswork/my-nginx-app:v1'
+                bat 'docker push jaydevopswork/my-nginx-app:v2'
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
                 bat '''
                 docker stop my-nginx-app 2>nul
                 docker rm my-nginx-app 2>nul
-                docker run -d -p 8081:80 --name my-nginx-app jaydevopswork/my-nginx-app:v1
+                docker run -d -p 8081:80 --name my-nginx-app jaydevopswork/my-nginx-app:v2
                 '''
             }
         }

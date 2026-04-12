@@ -32,7 +32,7 @@ pipeline {
                 bat '''
                 docker stop my-nginx-app 2>nul
                 docker rm my-nginx-app 2>nul
-                docker run -d -p 8081:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest
+                docker run -d -p 8081:80 --name my-nginx-app jaydevopswork/my-nginx-app:v1
                 '''
             }
         }

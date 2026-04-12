@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t jaydevopswork/my-nginx-app:v2 .'
+                bat 'docker build --no-cache -t jaydevopswork/my-nginx-app:v2 .'
             }
         }
 

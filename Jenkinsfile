@@ -24,7 +24,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 bat 'docker push jaydevopswork/my-nginx-app:latest'
-                bat 'docker push jaydevopswork/my-nginx-app:%BUILD_NUMBER%'
+                bat 'docker push jaydevopswork/my-nginx-app:v%BUILD_NUMBER%'
             }
         }
 

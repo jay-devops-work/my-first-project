@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t jaydevopswork/my-nginx-app:v2 .'
+                bat 'docker build -t jaydevopswork/my-nginx-app:latest -t jaydevopswork/my-nginx-app:v%BUILD_NUMBER% .'
             }
         }
 
@@ -23,7 +23,8 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker push jaydevopswork/my-nginx-app:v2'
+                bat 'docker push jaydevopswork/my-nginx-app:latest'
+                bat 'docker push jaydevopswork/my-nginx-app:%BUILD_NUMBER%'
             }
         }
 

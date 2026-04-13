@@ -28,19 +28,18 @@ pipeline {
             }
         }
 
-        stage('Deploy Container') {
+        stage('Deploy to EC2') {
             steps {
-                bat '''
-                docker stop my-nginx-app 2>nul
-                docker rm my-nginx-app 2>nul
-                docker run -d -p 8081:80 --name my-nginx-app jaydevopswork/my-nginx-app:v2
-                '''
-            }
-        }
-
-        stage('Test') {
-            steps {
-                bat 'curl http://localhost:8081'
+                sshagent(['ec2-ssh-key']) {
+                    bat '''
+                    ssh -o StrictHostKeyChecking=no ec2-54-83-151-187.compute-1.amazonaws.com "
+                    docker pull jaydevopswork/my-nginx-app:latest &&
+                    docker stop my-nginx-app || true &&
+                    docker rm my-nginx-app || true &&
+                    docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest
+                    "
+                    '''
+                }
             }
         }
     }

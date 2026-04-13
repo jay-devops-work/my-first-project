@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-        stage('Login to DockerHub') {
+        stage('login to DockerHub') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-cred',

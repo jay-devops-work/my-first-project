@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sshagent(['ec2-ssh-key']) {
                     bat '''
-                    ssh -o StrictHostKeyChecking=no ec2-3-88-167-89.compute-1.amazonaws.com "
+                    ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-88-167-89.compute-1.amazonaws.com "
                     docker pull jaydevopswork/my-nginx-app:latest &&
                     docker stop my-nginx-app || true &&
                     docker rm my-nginx-app || true &&

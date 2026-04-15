@@ -31,11 +31,7 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 bat '''
-                ssh -i D:/my-nginx-project-1-key.pem ubuntu@ec2-54-173-118-242.compute-1.amazonaws.com
-                "docker pull jaydevopswork/my-nginx-app:latest && 
-                 docker stop my-nginx-app || true && 
-                 docker rm my-nginx-app || true && 
-                 docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest"
+                ssh -i D:/my-nginx-project-1-key.pem ubuntu@ec2-54-173-118-242.compute-1.amazonaws.com "docker pull jaydevopswork/my-nginx-app:latest && docker stop my-nginx-app || true && docker rm my-nginx-app || true && docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest"
                 '''
             }
         }

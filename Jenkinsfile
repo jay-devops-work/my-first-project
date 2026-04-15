@@ -33,7 +33,7 @@ pipeline {
                 bat """
                 ssh -o StrictHostKeyChecking=no -i "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\automated-my-nginx-app-pipeline\\my-nginx-project-1-key.pem" ubuntu@ec2-54-173-118-242.compute-1.amazonaws.com "sudo docker pull jaydevopswork/my-nginx-app:latest && sudo docker stop my-nginx-app || true && sudo docker rm my-nginx-app || true && sudo docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest"
                 """
-    }
-}
+            }
+        }
     }
 }

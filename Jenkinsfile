@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy to eC2') {
             steps {
                 bat '''
-                ssh -o StrictHostKeyChecking=no -i D:/my-nginx-project-1-key.pem ubuntu@ec2-54-173-118-242.compute-1.amazonaws.com "docker pull jaydevopswork/my-nginx-app:latest && docker stop my-nginx-app || true && docker rm my-nginx-app || true && docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest"
+                ssh -o StrictHostKeyChecking=no -i my-nginx-project-1-key.pem ubuntu@ec2-54-173-118-242.compute-1.amazonaws.com "docker pull jaydevopswork/my-nginx-app:latest && docker stop my-nginx-app || true && docker rm my-nginx-app || true && docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest"
                 '''
             }
         }

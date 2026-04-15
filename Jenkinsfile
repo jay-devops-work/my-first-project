@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-        stage('login to DockerHub') {
+        stage('Login to DockerHub') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-cred',
@@ -28,18 +28,15 @@ pipeline {
             }
         }
 
-        stage('Deploy to eC2') {
+        stage('Deploy to EC2') {
             steps {
-                sshagent(['ec2-ssh-key']) {
-                    bat '''
-                    ssh -o StrictHostKeyChecking=no ec2-54-196-232-83.compute-1.amazonaws.com "
-                    docker pull jaydevopswork/my-nginx-app:latest &&
-                    docker stop my-nginx-app || true &&
-                    docker rm my-nginx-app || true &&
-                    docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest
-                    "
-                    '''
-                }
+                bat '''
+                ssh -i C:\\Users\\gauta\\Downloads\\your-key.pem ubuntu@ec2-54-196-232-83.compute-1.amazonaws.com 
+                "docker pull jaydevopswork/my-nginx-app:latest && 
+                 docker stop my-nginx-app || true && 
+                 docker rm my-nginx-app || true && 
+                 docker run -d -p 80:80 --name my-nginx-app jaydevopswork/my-nginx-app:latest"
+                '''
             }
         }
     }

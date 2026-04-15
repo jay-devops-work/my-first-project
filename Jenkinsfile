@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to EC2') {
+        stage('Deploy to eC2') {
             steps {
                 bat '''
                 ssh -i C:\\Users\\gauta\\Downloads\\your-key.pem ubuntu@ec2-54-196-232-83.compute-1.amazonaws.com 

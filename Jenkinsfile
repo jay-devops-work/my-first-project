@@ -28,10 +28,10 @@ pipeline {
             }
         }
 
-        stage('Deploy to eC2') {
+        stage('Deploy to EC2') {
             steps {
                 bat '''
-                ssh -i ""C:\Users\gauta\OneDrive\문서\my-nginx-project-1-key.pem"" ubuntu@ec2-54-173-118-242.compute-1.amazonaws.com
+                ssh -i ""C:\Users\gauta\my-nginx-project-1-key.pem"" ubuntu@ec2-54-173-118-242.compute-1.amazonaws.com
                 "docker pull jaydevopswork/my-nginx-app:latest && 
                  docker stop my-nginx-app || true && 
                  docker rm my-nginx-app || true && 
